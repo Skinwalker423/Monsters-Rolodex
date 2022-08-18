@@ -5,7 +5,7 @@ import SearchBar from "./components/search-box/SearchBar";
 import { getData } from "./utils/data.utils";
 
 
-type Monsters = {
+export type Monster = {
   id: string;
   name: string;
   email: string;
@@ -15,7 +15,7 @@ type Monsters = {
 const App = () => {
 
   const [value, setValue] = useState('');
-  const [monsters, setMonsters] = useState<Monsters[]>([]);
+  const [monsters, setMonsters] = useState<Monster[]>([]);
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
   const [title, setTitle] = useState('Monsters Rolodex');
 
@@ -31,7 +31,7 @@ const App = () => {
   //   getMonsters();
 
     const fetchUsers = async () => {
-      const users = await getData<Monsters[]>('https://jsonplaceholder.typicode.com/users');
+      const users = await getData<Monster[]>('https://jsonplaceholder.typicode.com/users');
       setMonsters(users);
     }
     
