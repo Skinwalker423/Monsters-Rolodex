@@ -1,38 +1,24 @@
-import React, {useState, useEffect, ChangeEvent} from "react";
+import React, {useState, useEffect, ChangeEvent, ChangeEventHandler} from "react";
 import axios from 'axios';
 import CreateMonsterList from "./components/card-list/createMonsterList";
 import SearchBar from "./components/search-box/SearchBar";
 import { getData } from "./utils/data.utils";
 
 
-export type Monster = {
-  id: string;
-  name: string;
-  email: string;
-}
-
-
 const App = () => {
 
   const [value, setValue] = useState('');
-  const [monsters, setMonsters] = useState<Monster[]>([]);
+  const [monsters, setMonsters] = useState([]);
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
   const [title, setTitle] = useState('Monsters Rolodex');
 
 
-  
-
   useEffect(()=> {
-  //   console.log('useeffect1');
-  //   const getMonsters = async() => {
-  //       const res = await axios.get('https://jsonplaceholder.typicode.com/users');
-  //     setMonsters(res.data);
-  // }
-  //   getMonsters();
-
+  
     const fetchUsers = async () => {
-      const users = await getData<Monster[]>('https://jsonplaceholder.typicode.com/users');
-      setMonsters(users);
+      const monstersData = await getData>('https://jsonplaceholder.typicode.com/users');
+      
+      setMonsters(monstersData);
     }
     
     fetchUsers();
@@ -40,7 +26,7 @@ const App = () => {
   }, [])
 
   useEffect(()=> {
-    console.log('filtered mosters');
+    console.log('filtered monsters');
     const newFilteredMonsters = monsters.filter(monster => {
           return monster.name.toLowerCase().includes(value)
       });
@@ -48,7 +34,7 @@ const App = () => {
       
   }, [value, monsters])
 
-  const onValueChange = (e: ChangeEvent<HTMLInputElement>) : void => {
+  const onValueChange: ChangeEventHandler<HTMLInputElement> = (e: ChangeEvent<HTMLInputElement>) : void => {
     const inputValue = e.target.value.toLowerCase();
     setValue(inputValue);
     setTitle(inputValue);

@@ -1,13 +1,10 @@
 import React from "react";
 import '../search-box/search-box.css';
 import Card from "../card/card";
-import { Monster } from "../../App";
 
-type MonsterListProps = {
-    monsters: Monster[];
-}
 
-const CreateMonsterList = ({monsters}: MonsterListProps) => {
+
+const CreateMonsterList = ({monsters}) => {
 
     const renderList = () =>{
         return monsters.map((monster) => 

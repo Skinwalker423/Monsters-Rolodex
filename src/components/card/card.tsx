@@ -1,13 +1,8 @@
 import React from "react";
 import '../search-box/search-box.css';
-import {Monster} from '../../App';
-
-type CardProps = {
-    monster: Monster;
-}
 
 
-const Card = ({monster} : CardProps) => {
+const Card = ({monster}) => {
 
         const {id, email, name} = monster;
 
