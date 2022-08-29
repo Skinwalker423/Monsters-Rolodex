@@ -1,13 +1,13 @@
-import React, {ChangeEventHandler} from "react";
+import React, {ChangeEventHandler, FC} from "react";
 import './search-box.css';
 
-type SearchBoxProps = {
+export type SearchBarProps = {
     className: string;
-    placeholder?: string;
-    onChangeHandler: ChangeEventHandler<HTMLInputElement>;
-};
+    placeholder: string;
+    onChangeHandler: ChangeEventHandler<HTMLInputElement>
+}
 
-const SearchBar = ({className, placeholder, onChangeHandler,}: SearchBoxProps) => (
+const SearchBar: FC<SearchBarProps>= ({className, placeholder, onChangeHandler}) => (
     <input
         className={`search-box ${className}`} 
         onChange={onChangeHandler} 

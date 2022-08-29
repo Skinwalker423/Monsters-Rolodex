@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import '../search-box/search-box.css';
 import Card from "../card/card";
 import { Monster } from "../../App";
