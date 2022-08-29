@@ -1,5 +1,4 @@
-import React, {useState, useEffect, ChangeEvent, ChangeEventHandler} from "react";
-import axios from 'axios';
+import React, {useState, useEffect, ChangeEvent} from "react";
 import CreateMonsterList from "./components/card-list/createMonsterList";
 import SearchBar from "./components/search-box/SearchBar";
 import { getData } from "./utils/data.utils";
@@ -13,7 +12,7 @@ export type Monster = {
 const App = () => {
 
   const [value, setValue] = useState('');
-  const [monsters, setMonsters] = useState([]);
+  const [monsters, setMonsters] = useState<Monster[]>([]);
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
   const [title, setTitle] = useState('Monsters Rolodex');
 
@@ -39,7 +38,7 @@ const App = () => {
       
   }, [value, monsters])
 
-  const onValueChange: ChangeEventHandler<HTMLInputElement> = (e: ChangeEvent<HTMLInputElement>) : void => {
+  const onValueChange = (e: ChangeEvent<HTMLInputElement>) : void => {
     const inputValue = e.target.value.toLowerCase();
     setValue(inputValue);
     setTitle(inputValue);

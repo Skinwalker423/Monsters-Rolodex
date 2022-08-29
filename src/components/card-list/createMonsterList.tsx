@@ -7,7 +7,7 @@ type MonsterListProps = {
     monsters: Monster[];
 }
 
-const CreateMonsterList: FC<MonsterListProps>  = ({monsters}) => {
+const CreateMonsterList = ({monsters}: MonsterListProps) => {
 
     const renderList = () =>{
         return monsters.map((monster) => 
