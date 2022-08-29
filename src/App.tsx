@@ -4,6 +4,11 @@ import CreateMonsterList from "./components/card-list/createMonsterList";
 import SearchBar from "./components/search-box/SearchBar";
 import { getData } from "./utils/data.utils";
 
+export type Monster = {
+  name: string;
+  id: string;
+  email: string;
+}
 
 const App = () => {
 
@@ -16,7 +21,7 @@ const App = () => {
   useEffect(()=> {
   
     const fetchUsers = async () => {
-      const monstersData = await getData>('https://jsonplaceholder.typicode.com/users');
+      const monstersData = await getData<Monster[]>('https://jsonplaceholder.typicode.com/users');
       
       setMonsters(monstersData);
     }
